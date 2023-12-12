@@ -2,14 +2,13 @@
 
 import { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { useRouter } from "next/navigation";
-import { Web5 } from "@web5/api";
 import { AppContext } from "@/context";
 import { useWeb5 } from "@/hooks/useWeb5";
 import Spinner from "@/components/Spinner";
 
 export default function Login() {
   let { web5, userDid } = useWeb5();
-  const router = useRouter();
+  // const router = useRouter();
   const { getUserWeb5Data, setName } = useContext(AppContext);
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +36,7 @@ export default function Login() {
 
       // }
       setLoading(true);
-      router.push("/dashboard");
+   window.location.assign("/dashboard");
     } catch (error) {
       setLoading(false);
       console.error("Error initializing Web5:", error);
