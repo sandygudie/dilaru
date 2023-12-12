@@ -15,7 +15,7 @@ export default function Dashboard() {
       router.push("/");
     }
   }, []);
-
+console.log(state)
   return (
     <div className="flex bg-white items-start relative">
       <Sidebar />
