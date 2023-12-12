@@ -1,4 +1,3 @@
-
 "use client";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
@@ -6,7 +5,6 @@ import React, { useContext } from "react";
 import { AppContext } from "@/context";
 // import { useRouter } from 'next/navigation'
 import Profile from "@/components/Profile";
-
 
 export default function Dashboard() {
   const { state } = useContext(AppContext);
@@ -18,7 +16,7 @@ export default function Dashboard() {
     <div className="flex bg-white items-start relative">
       <Sidebar />
       <Header state={state} />
-      <Profile/>
+      <Profile />
     </div>
   );
 }

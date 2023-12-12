@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent, useContext } from "react";
-// import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import { Web5 } from "@web5/api";
 import { AppContext } from "@/context";
+import { useWeb5 } from "@/hooks/useWeb5";
 
 export default function Login() {
-  // const router = useRouter();
+  let { web5, userDid } = useWeb5();
+  const router = useRouter();
   const { getUserWeb5Data, setName } = useContext(AppContext);
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,10 +17,9 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const { web5, did } = await Web5.connect();
       const userWeb5data = {
         web5,
-        did,
+        userDid,
       };
       getUserWeb5Data({ userWeb5data });
 
@@ -34,7 +35,7 @@ export default function Login() {
       // if (record) {
 
       // }
-      // router.push("/dashboard");
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error initializing Web5:", error);
     }

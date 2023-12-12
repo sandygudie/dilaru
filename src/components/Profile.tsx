@@ -19,7 +19,7 @@ export default function Profile() {
     setModalOpen(false);
   };
   return (
-    <div className="h-full">
+    <div className="h-full mx-12 mt-24">
       {Object.keys(state.profile).length ? (
         <NinCard profile={state.profile} />
       ) : (
