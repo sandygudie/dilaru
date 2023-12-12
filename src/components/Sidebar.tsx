@@ -16,7 +16,7 @@ export default function Sidebar() {
       id: 1,
       name: "Access Control",
       icon: <BsRobot />,
-      link: "/access-control",
+      link: "#",
     },
   ];
 
