@@ -15,14 +15,12 @@ export default function Login() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       const userWeb5data = {
         web5,
         userDid,
       };
       getUserWeb5Data({ userWeb5data });
-
       setName({ name: userName });
       // const { record } = await web5.dwn.records.create({
       //   data: name,

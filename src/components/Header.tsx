@@ -14,7 +14,7 @@ export default function Header({ state }: any) {
         </h1>
         <div className="flex gap-4 items-center">
           <p className="w-36 truncate overflow-hidden">
-            {state.userWeb5data.did}
+            {state.userWeb5data.userDid}
           </p>
           <IconButton
             handleClick={() => {

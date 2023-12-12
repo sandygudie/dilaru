@@ -4,7 +4,7 @@ import * as React from "react";
 export interface IAppState {
   userWeb5data: {
     web5: {};
-    did: string;
+    userDid: string;
   };
   name: string;
   profile: {};
@@ -13,7 +13,7 @@ export interface IAppState {
 export const initialState: IAppState = {
   userWeb5data: {
     web5: {},
-    did: "",
+    userDid: "",
   },
   name: "",
   profile: {},
@@ -32,7 +32,6 @@ export type IAction = {
 
 export interface IAppContext {
   state: IAppState;
-
   getUserWeb5Data: (payload: any) => void;
   setName: (payload: any) => void;
   setProfile: (payload: any) => void;
@@ -42,7 +41,7 @@ const AppContext = React.createContext<IAppContext>({
   state: {
     userWeb5data: {
       web5: {},
-      did: "",
+      userDid: "",
     },
     name: "",
     profile: {},
@@ -55,6 +54,7 @@ const AppContext = React.createContext<IAppContext>({
 
 const appReducer = (state: IAppState, action: IAction): typeof initialState => {
   const { type, payload } = action;
+
 
   switch (type) {
     case "SET_USERWEB5DATA": {
@@ -79,6 +79,7 @@ const AppContextProvider = ({ children }: any) => {
     appReducer,
     initialState as IAppState
   );
+
 
   const value = {
     state,
