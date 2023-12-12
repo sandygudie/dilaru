@@ -9,15 +9,12 @@ import Loading from "../loading";
 
 export default function Dashboard() {
   const { state } = useContext(AppContext);
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-    if (
-      !(state.userWeb5data.userDid && state.userWeb5data.web5) 
-    ) {
-     router.push("/");
+    if (!(state.userWeb5data.userDid && state.userWeb5data.web5)) {
+      router.push("/");
     }
-  }, [router, state.userWeb5data.userDid, state.userWeb5data.web5]);
-  // console.log(typeof window);
+  }, [state.userWeb5data.userDid, state.userWeb5data.web5]);
 
   return (
     <div className="flex bg-white items-start relative">
