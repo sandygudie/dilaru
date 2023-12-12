@@ -1,7 +1,7 @@
 "use client";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
-import React, { Suspense, useContext } from "react";
+import React, { Suspense, useContext, useEffect } from "react";
 import { AppContext } from "@/context";
 import { useRouter } from "next/navigation";
 import Profile from "@/components/Profile";
@@ -9,11 +9,16 @@ import Loading from "../loading";
 
 export default function Dashboard() {
   const { state } = useContext(AppContext);
+  const router = useRouter()
+  useEffect(() => {
+    if (
+      !(state.userWeb5data.userDid && state.userWeb5data.web5) 
+    ) {
+     router.push("/");
+    }
+  }, [router, state.userWeb5data.userDid, state.userWeb5data.web5]);
+  // console.log(typeof window);
 
-  const router = useRouter();
-  if (!(state.userWeb5data.userDid && state.userWeb5data.web5)) {
-    router.push("/");
-  }
   return (
     <div className="flex bg-white items-start relative">
       <Sidebar />

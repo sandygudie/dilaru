@@ -70,10 +70,10 @@ export default function Login() {
         <p className="text-xs mt-2 text-white">
           (*Your pin is important for account recovery)
         </p>
-        <div className="text-center">
+        <div className="text-center w-40 mx-auto">
           <button
             type={"submit"}
-            className="p-4 font-bold text-white rounded-lg w-40 my-8 bg-yellow"
+            className="p-4 font-bold text-white rounded-lg w-full h-12 my-8 bg-yellow flex flex-col items-center justify-center"
           >
             {loading ? <Spinner /> : "Login"}
           </button>
