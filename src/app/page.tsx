@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Web5 } from "@web5/api";
 import { AppContext } from "@/context";
 import { useWeb5 } from "@/hooks/useWeb5";
+import Spinner from "@/components/Spinner";
 
 export default function Login() {
   let { web5, userDid } = useWeb5();
@@ -12,9 +13,11 @@ export default function Login() {
   const { getUserWeb5Data, setName } = useContext(AppContext);
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const userWeb5data = {
         web5,
@@ -33,8 +36,10 @@ export default function Login() {
       // if (record) {
 
       // }
+      setLoading(true);
       router.push("/dashboard");
     } catch (error) {
+      setLoading(false);
       console.error("Error initializing Web5:", error);
     }
   };
@@ -70,7 +75,7 @@ export default function Login() {
             type={"submit"}
             className="p-4 font-bold text-white rounded-lg w-40 my-8 bg-yellow"
           >
-            Login
+            {loading ? <Spinner /> : "Login"}
           </button>
         </div>
       </form>
