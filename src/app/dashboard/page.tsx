@@ -14,7 +14,7 @@ export default function Dashboard() {
     if (!(state.userWeb5data.userDid && state.userWeb5data.web5)) {
       window.location.assign("/");
     }
-  }, []);
+  }, [state.userWeb5data.userDid, state.userWeb5data.web5]);
 
   return (
     <div className="flex bg-white items-start relative">
