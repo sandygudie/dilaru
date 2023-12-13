@@ -14,7 +14,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {}, [web5, userDid]);
+  // useEffect(() => {}, [web5, userDid]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,7 +51,7 @@ export default function Login() {
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
+console.log(userDid )
   return (
     <main className="flex min-h-screen bg-black flex-col items-center justify-center">
       {userDid ? (

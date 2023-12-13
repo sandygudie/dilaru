@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 
 export function useWeb5() {
-  const [web5, setWeb5] = useState<any>();
+  const [web5, setWeb5] = useState({});
   const [userDid, setdUserDid] = useState("");
 
   useEffect(() => {
