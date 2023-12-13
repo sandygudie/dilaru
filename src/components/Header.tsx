@@ -17,13 +17,13 @@ export default function Header({ state }: any) {
     }
   }
   return (
-    <div className="p-6 absolute top-0 w-full bg-yellow">
+    <div className="p-4 md:p-6 absolute top-0 w-full bg-yellow">
       <div className="flex justify-between items-center">
-        <span className="font-bold text-xl">DILARU-ID</span>
-        <h1 className="text-2xl">
-          Welcome <span className="font-bold text-3xl"> {state.name}</span>
+        <span className="font-bold text-lg md:text-xl w-36">DILARU-ID</span>
+        <h1 className="text-right text-2xl">
+          Welcome <span className="font-bold text-lg md:text-3xl"> {state.name}</span>
         </h1>
-        <div className="flex gap-2 items-center">
+        <div className="hidden md:flex gap-2 items-center">
           <p className="w-36 truncate overflow-hidden">
             {state.userWeb5data.userDid}
           </p>

@@ -19,18 +19,18 @@ export default function Profile() {
     setModalOpen(false);
   };
   return (
-    <div className="h-full mx-12 mt-24">
+    <div className="h-full mx-8 md:mx-12 mt-36">
       {Object.keys(state.profile).length ? (
         <NinCard profile={state.profile} />
       ) : (
         <div className="flex items-center text-black h-full justify-center flex-col">
           <button
             onClick={() => setModalOpen(true)}
-            className="cursor-pointer flex items-center shadow-lg py-8 px-10 border-[1px] flex-col justify-center"
+            className="cursor-pointer flex items-center shadow-lg p-6 md:py-8 md:px-10 border-[1px] flex-col justify-center"
           >
-            <IoAddCircleOutline size={50} color="black" className="" />
+            <IoAddCircleOutline color="black" className="text-4xl" />
 
-            <p className="">Add NIN Data</p>
+            <p className="text-sm md:text-base">Add NIN Data</p>
           </button>
         </div>
       )}

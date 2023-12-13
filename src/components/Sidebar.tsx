@@ -26,7 +26,7 @@ export default function Sidebar() {
     router.push("/");
   };
   return (
-    <div className="bg-black text-white h-screen w-[230px] relative  py-28 px-6">
+    <div className="bg-black text-white h-screen md:w-[230px] relative py-28 px-4 md:px-6">
       {sidebarItems.map((ele) => {
         return (
           <Link
@@ -45,7 +45,7 @@ export default function Sidebar() {
         onClick={() => {
           handleLogout();
         }}
-        className="bg-yellow absolute flex items-center gap-3 bottom-10 rounded-lg text-white font-medium py-2 px-4"
+        className="bg-yellow text-sm md:text-base absolute flex items-center gap-3 bottom-10 rounded-lg text-white font-medium py-2 px-4"
       >
         <CiLogout /> Logout
       </button>
