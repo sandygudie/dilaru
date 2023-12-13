@@ -9,12 +9,12 @@ import Spinner from "@/components/Spinner";
 export default function Login() {
   let { web5, userDid } = useWeb5();
   const router = useRouter();
-  const { getUserWeb5Data, setName } = useContext(AppContext);
+  const { getUserWeb5Data, setName, state } = useContext(AppContext);
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {}, [web5, userDid]);
+  useEffect(() => {}, [web5, userDid]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +24,7 @@ export default function Login() {
         web5,
         userDid,
       };
+      console.log(userWeb5data);
       getUserWeb5Data({ userWeb5data });
       setName({ name: userName });
       // const { record } = await web5.dwn.records.create({
@@ -36,22 +37,24 @@ export default function Login() {
 
       // if (record) {
       // }
-      // console.log(userName);
+     
       setLoading(false);
-      router.push("/dashboard");
+      // if (state.userWeb5data.userDid) {
+        router.push("/dashboard");
+      // }
     } catch (error) {
       setLoading(false);
       console.error("Error initializing Web5:", error);
     }
   };
-
+  console.log(state);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-console.log(userDid )
+  console.log(userDid);
   return (
     <main className="flex min-h-screen bg-black flex-col items-center justify-center">
       {userDid ? (
