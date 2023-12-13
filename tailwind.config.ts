@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: "hsl(39, 100%, 47%)",
-        error: "hsl(11, 80%, 60%)",
+        error: "hsl(0deg 100% 50%)",
         white: "#ffff",
         black: "#000",
         secondary: "#FFBA19",
@@ -19,7 +19,7 @@ const config: Config = {
         "gray-100": "#F9F8F4",
         "gray-200": "#9E9E9E",
         "gray-300": "hsl(0deg 0% 50.2%)",
-        yellow: "hsl(38, 94%, 49%);",
+        yellow: "hsl(38, 94%, 49%)",
        green: '#7fd57f'
       },
     },

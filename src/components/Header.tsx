@@ -32,15 +32,17 @@ export default function Header({ state }: any) {
               copyTextToClipboard();
             }}
           >
-           <div className="flex items-center gap-2">
-           { isCopy.length >0 ? <span className="text-sm text-green">Copied</span>:null}
-            <FiCopy
-              size={20}
-              className={`${
-                isCopy.length > 0 ? "text-green" : "text-gray-300"
-              }`}
-            />
-           </div>
+            <div className="flex items-center gap-2">
+              {isCopy.length > 0 ? (
+                <span className="text-sm text-green">Copied</span>
+              ) : null}
+              <FiCopy
+                size={20}
+                className={`${
+                  isCopy.length > 0 ? "text-green" : "text-gray-300"
+                }`}
+              />
+            </div>
           </IconButton>
         </div>
       </div>
