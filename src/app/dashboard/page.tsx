@@ -17,7 +17,7 @@ export default function Dashboard() {
       router.push("/");
     }
   }, [state.userWeb5data.userDid]);
-  console.log(state.userWeb5data.userDid);
+  // console.log(state.userWeb5data.userDid);
   return (
     <>
       {state.userWeb5data.userDid ? (

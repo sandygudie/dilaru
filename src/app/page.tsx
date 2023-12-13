@@ -24,7 +24,7 @@ export default function Login() {
         web5,
         userDid,
       };
-      console.log(userWeb5data);
+      // console.log(userWeb5data);
       getUserWeb5Data({ userWeb5data });
       setName({ name: userName });
       // const { record } = await web5.dwn.records.create({
@@ -47,14 +47,14 @@ export default function Login() {
       console.error("Error initializing Web5:", error);
     }
   };
-  console.log(state);
+  // console.log(state);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  console.log(userDid);
+  // console.log(userDid);
   return (
     <main className="flex min-h-screen bg-black flex-col items-center justify-center">
       {userDid ? (
