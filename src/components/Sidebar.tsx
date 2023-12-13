@@ -26,11 +26,11 @@ export default function Sidebar() {
         return (
           <Link
             href={ele.link}
-            className="flex gap-4 my-8 items-center"
+            className="flex gap-4 my-8 items-center group"
             key={ele.id}
           >
-            <span className="text-xl text-gray-200">{ele.icon}</span>
-            <p className="text-sm">{ele.name}</p>
+            <span className="text-xl text-gray-200 group-hover:text-yellow">{ele.icon}</span>
+            <p className="text-sm group-hover:text-yellow">{ele.name}</p>
           </Link>
         );
       })}

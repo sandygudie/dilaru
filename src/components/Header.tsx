@@ -19,7 +19,7 @@ export default function Header({ state }: any) {
   return (
     <div className="p-6 absolute top-0 w-full bg-yellow">
       <div className="flex justify-between items-center">
-        <span>Logo</span>
+        <span className="font-bold text-xl">DILARU-ID</span>
         <h1 className="text-2xl">
           Welcome <span className="font-bold text-3xl"> {state.name}</span>
         </h1>
