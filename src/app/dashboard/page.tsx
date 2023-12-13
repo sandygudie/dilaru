@@ -11,13 +11,13 @@ import Spinner from "@/components/Spinner";
 export default function Dashboard() {
   const { state } = useContext(AppContext);
   const router = useRouter();
-  // console.log(state)
+
   useEffect(() => {
-    if (!(state.userWeb5data.userDid && state.userWeb5data.web5)) {
-     router.push("/");
+    if (!state.userWeb5data.userDid.length) {
+      router.push("/");
     }
-  }, [state.userWeb5data.userDid, state.userWeb5data.web5]);
-  console.log(state);
+  }, [state.userWeb5data.userDid]);
+  console.log(state.userWeb5data.userDid);
   return (
     <>
       {state.userWeb5data.userDid ? (
@@ -25,7 +25,7 @@ export default function Dashboard() {
           <Sidebar />
           <Header state={state} />
           {/* <Suspense fallback={<Loading />}> */}
-            <Profile />
+          <Profile />
           {/* </Suspense> */}
         </div>
       ) : (
