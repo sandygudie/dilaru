@@ -10,6 +10,7 @@ import Loading from "../loading";
 export default function Dashboard() {
   const { state } = useContext(AppContext);
   // const router = useRouter();
+// console.log(state)
   useEffect(() => {
     if (!(state.userWeb5data.userDid && state.userWeb5data.web5)) {
       window.location.assign("/");

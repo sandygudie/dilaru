@@ -54,8 +54,6 @@ const AppContext = React.createContext<IAppContext>({
 
 const appReducer = (state: IAppState, action: IAction): typeof initialState => {
   const { type, payload } = action;
-
-
   switch (type) {
     case "SET_USERWEB5DATA": {
       return {
@@ -79,11 +77,8 @@ const AppContextProvider = ({ children }: any) => {
     appReducer,
     initialState as IAppState
   );
-
-
   const value = {
     state,
-
     getUserWeb5Data: (payload: any) => {
       dispatch({ type: ActionType.SET_USERWEB5DATA, payload });
     },
