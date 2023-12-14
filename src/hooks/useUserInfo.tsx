@@ -3,33 +3,56 @@
 import { useState, useEffect } from "react";
 
 export default function useUserInfo(web5: any) {
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState<
+    { record: any; data: any; id: any }[]
+  >([]);
 
   useEffect(() => {
     if (!web5) return;
-    const getUserInfo = async () => {
+    const fetchUser = async () => {
       try {
-        const response: any = await web5.dwn.records.query({
+        const { records }: any = await web5?.dwn.records.query({
           message: {
             filter: {
               schema: "http://schema-registry.org/message",
+              dataFormat: "application/json",
             },
           },
         });
-
-        response.records.forEach(
-          async (record: { data: { json: () => any } }) => {
-            let username = await record.data.json();
-            setUserData(username);
-          }
-        );
-
+        const mappedData = [];
+        for (let record of records) {
+          const data = await record.data.json();
+          const dataRecord = { record, data, id: record.id };
+          mappedData.push(dataRecord);
+        }
+        setUserData(mappedData);
       } catch (error) {
         console.error("Error initializing Web5:", error);
       }
     };
-    getUserInfo();
+    fetchUser();
   }, [web5]);
 
-  return { userData };
+  async function createUserData(data: any) {
+    const { record }: any = await web5?.dwn.records.create({
+      data: data,
+      message: {
+        schema: "http://schema-registry.org/message",
+        dataFormat: "application/json",
+      },
+    });
+  }
+  async function updateUserData(id: string, updatedData: any) {
+    const { record } = await web5.dwn.records.read({
+      message: {
+        filter: {
+          recordId: id,
+        },
+      },
+    });
+    await record.update({ data: updatedData });
+  }
+
+
+  return { userData, updateUserData, createUserData };
 }
