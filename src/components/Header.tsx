@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import IconButton from "./IconButton";
 import { FiCopy } from "react-icons/fi";
+import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   userData: any;
@@ -22,7 +24,17 @@ export default function Header({ userData }: Props) {
   return (
     <div className="p-4 md:p-6 absolute top-0 w-full bg-yellow">
       <div className="flex justify-between items-center">
-        <span className="font-bold text-lg md:text-xl w-36">DILARU-ID</span>
+        <span className="font-bold text-lg md:text-xl w-36">
+          <Link href="/dashboard">
+            <Image
+              src="/logo-black.png"
+              alt="logo"
+              height={100}
+              width={100}
+              className="w-36"
+            />
+          </Link>
+        </span>
         <h1 className="text-right text-2xl">
           Welcome{" "}
           <span className="font-bold text-lg md:text-3xl">

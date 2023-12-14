@@ -6,7 +6,7 @@ interface IProfileProps {
 }
 export default function NinCard({ profile }: IProfileProps) {
   return (
-    <div className="w-96 shadow-2xl px-10 pt-10 pb-6 text-black ">
+    <div className="hidden md:block w-96 shadow-2xl px-10 pt-10 pb-6 text-black ">
       <h3 className="font-bold text-xl"> {profile.cardType}</h3>
      <div className="mt-4 flex gap-8 items-center justify-between">
      <div>
