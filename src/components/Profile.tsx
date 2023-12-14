@@ -13,17 +13,6 @@ interface Props {
 export default function Profile({ updateUserData, userData }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
   const { setProfile, state } = useContext(AppContext);
-
-  // const [verifiedCredential, setVerifiedCredentials] = useState(
-  //   userData[0].data.verifiedCredential
-  // );
-  // console.log(userData[0].data.verifiedCredential);
-  // logout after 2hr
-  // useEffect(() => {
-  //   if (userData[0]?.data.verifiedCredential.length) {
-  //     setProfile(userData[0]?.data.verifiedCredential[0]);
-  //   }
-  // }, [setProfile]);
   
   const handleNinForm = (formValue: any) => {
     const data = {

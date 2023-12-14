@@ -28,7 +28,7 @@ export default function Page() {
       </div>
     );
   }
-  console.log(userDid);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -42,15 +42,15 @@ export default function Page() {
     setLoading(true);
     e.preventDefault();
     updateUserData(userData[0].id, {
-      username: userData[0].data.username,
+      ...userData[0]?.data,
       password: password,
     });
     setLoading(false);
     Swal.fire({
-      title: "Successful!",
+      title: "Password Reset Successful!",
       icon: "success",
       allowOutsideClick: false,
-      confirmButtonText: "OK",
+      confirmButtonText: "Continue to login",
       confirmButtonColor: "hsl(38, 94%, 49%)",
     }).then((result) => {
       if (result.isConfirmed) {

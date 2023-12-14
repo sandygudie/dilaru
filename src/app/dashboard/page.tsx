@@ -23,8 +23,7 @@ export default function Dashboard() {
     }
   }, [router]);
   // use route query to toggle view for the sidevbar menu
-  // console.log(userData)
-  // console.log(userDid)
+ 
   return (
     <>
       {userDid && userData ? (

@@ -52,7 +52,7 @@ export default function useUserInfo(web5: any) {
     });
     await record.update({ data: updatedData });
   }
-  console.log(userData);
+
 
   return { userData, updateUserData, createUserData };
 }
