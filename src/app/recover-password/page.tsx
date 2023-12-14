@@ -7,6 +7,8 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useWeb5 } from "@/hooks/useWeb5";
 import useUserInfo from "@/hooks/useUserInfo";
 import Swal from "sweetalert2";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
@@ -68,6 +70,17 @@ export default function Page() {
 
   return (
     <div className="flex min-h-screen bg-black flex-col items-center justify-center">
+       <div className="absolute left-10 top-10">
+        <Link href="/">
+          <Image
+                src="/logo-white.svg"
+            alt="logo"
+            height={100}
+            width={100}
+            className="w-36"
+          />
+        </Link>
+      </div>
       {newPassword ? (
         <form className="" onSubmit={(e) => handleResetPassword(e)}>
           <div className="relative">

@@ -8,6 +8,7 @@ import Spinner from "@/components/Spinner";
 import { MdErrorOutline } from "react-icons/md";
 import Link from "next/link";
 import useUserInfo from "@/hooks/useUserInfo";
+import Image from "next/image";
 
 export default function Login() {
   const router = useRouter();
@@ -86,7 +87,18 @@ export default function Login() {
   };
 
   return (
-    <main className="flex min-h-screen bg-black flex-col items-center justify-center">
+    <main className="flex min-h-screen relative bg-black flex-col items-center justify-center">
+      <div className="absolute left-10 top-10">
+        <Link href="/">
+          <Image
+            src="/logo-white.svg"
+            alt="logo"
+            height={100}
+            width={100}
+            className="w-36"
+          />
+        </Link>
+      </div>
       {isAuthenticated === false ? (
         <form className="" onSubmit={(e) => handleSubmit(e)}>
           <input

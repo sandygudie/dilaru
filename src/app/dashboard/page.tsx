@@ -26,7 +26,9 @@ export default function Dashboard() {
         <div className="flex bg-white items-start relative">
           <Sidebar />
           <Header userData={userData} />
-          <Profile updateUserData={updateUserData} userData={userData} />
+         <div className="w-full">
+         <Profile updateUserData={updateUserData} userData={userData} />
+         </div>
         </div>
       ) : (
         <Loading />
