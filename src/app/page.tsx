@@ -101,7 +101,7 @@ export default function Login() {
             onChange={(e) => handlePasswordChange(e)}
             type="text"
             className="p-4 rounded-lg text-black w-2/6 min-w-[300px]"
-            placeholder="PIN"
+            placeholder="Password"
             min="5"
             required
           />
@@ -127,7 +127,7 @@ export default function Login() {
                 className={`${
                   error.length > 0 ? "border-[1px] border-error" : "border-none"
                 } p-4 rounded-lg text-black w-2/6 min-w-[300px]`}
-                placeholder="PIN"
+                placeholder="Password"
                 required
               />
               {error.length ? (
