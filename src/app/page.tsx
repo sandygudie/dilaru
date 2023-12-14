@@ -88,14 +88,14 @@ export default function Login() {
 
   return (
     <main className="flex min-h-screen relative bg-black flex-col items-center justify-center">
-      <div className="absolute left-10 top-10">
+      <div className="absolute left-10 top-10 h-10">
         <Link href="/">
           <Image
             src="/logo-white.svg"
             alt="logo"
             height={100}
             width={100}
-            className="w-36"
+            className="w-36 h-10"
           />
         </Link>
       </div>

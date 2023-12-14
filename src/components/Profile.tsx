@@ -54,7 +54,7 @@ export default function Profile({ updateUserData, userData }: Props) {
         <div className="flex items-center text-black h-[60vh] justify-center flex-col">
           <button
             onClick={() => setModalOpen(true)}
-            className="cursor-pointer flex items-center shadow-xl hover:bg-yellow/10 bg-yellow/5 p-6 
+            className="cursor-pointer flex items-center shadow-xl hover:bg-yellow/10 p-6 
              flex-col justify-center"
           >
             <IoAddCircleOutline color="black" className="text-4xl" />
