@@ -1,11 +1,10 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoAddCircleOutline } from "react-icons/io5";
 import Modal from "./Modal";
 import NinForm from "./NinForm";
 import { AppContext } from "@/context";
 import NinCard from "./NinCard";
-
 
 interface Props {
   userData: any;
@@ -14,17 +13,23 @@ interface Props {
 export default function Profile({ updateUserData, userData }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
   const { setProfile, state } = useContext(AppContext);
+
   // const [verifiedCredential, setVerifiedCredentials] = useState(
   //   userData[0].data.verifiedCredential
   // );
   // console.log(userData[0].data.verifiedCredential);
   // logout after 2hr
-
+  // useEffect(() => {
+  //   if (userData[0]?.data.verifiedCredential.length) {
+  //     setProfile(userData[0]?.data.verifiedCredential[0]);
+  //   }
+  // }, [setProfile]);
+  
   const handleNinForm = (formValue: any) => {
     const data = {
       ...formValue,
       cardType: "National Identity card (NIN)",
-    };
+    };                                                                
     setProfile(data);
     setModalOpen(false);
     updateUserData(userData[0]?.id, {
@@ -34,8 +39,11 @@ export default function Profile({ updateUserData, userData }: Props) {
   };
   return (
     <div className="h-full mx-8 md:mx-12 mt-36">
-      {userData[0]?.data.verifiedCredential.length ? (
-        <NinCard profile={userData[0]?.data.verifiedCredential[0]} />
+      {userData[0]?.data.verifiedCredential?.length ||
+      Object.keys(state.profile).length ? (
+        <NinCard
+          profile={userData[0]?.data.verifiedCredential?.length? userData[0]?.data.verifiedCredential[0] : state.profile}
+        />
       ) : (
         <div className="flex items-center text-black h-full justify-center flex-col">
           <button
