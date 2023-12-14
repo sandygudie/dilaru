@@ -32,10 +32,10 @@ export default function Profile({ updateUserData, userData }: Props) {
       Object.keys(state.profile).length ? (
         <div>
           <div className="mb-6 flex-col-reverse gap-y-4 md:gap-0 md:flex-row flex w-full items-center justify-between">
-            <h2 className="font-bold text-lg ">Verified Credentials</h2>
+            <h2 className="font-bold text-lg">Verified Credentials</h2>
             <button
-              onClick={() => setModalOpen(true)}
-              className="cursor-pointer flex items-center shadow-xl p-4 border-[1px] flex-col justify-center"
+              disabled
+              className="bg-gray-100 cursor-pointer flex items-center shadow-xl p-4 border-[1px] flex-col justify-center"
             >
               <IoAddCircleOutline color="black" className="text-4xl" />
               <p className="text-sm">Add Verified Credentials</p>
