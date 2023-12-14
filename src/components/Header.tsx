@@ -3,14 +3,17 @@ import React, { useState } from "react";
 import IconButton from "./IconButton";
 import { FiCopy } from "react-icons/fi";
 
-export default function Header({ state }: any) {
+interface Props {
+  userData: any;
+}
+export default function Header({ userData }: Props) {
   const [isCopy, setCopy] = useState("");
 
   async function copyTextToClipboard() {
     try {
       if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(state.userWeb5data.userDid);
-        setCopy(state.userWeb5data.userDid);
+        await navigator.clipboard.writeText(userData[0]?.record.author);
+        setCopy(userData[0]?.record.author);
       }
     } catch (err) {
       return err;
@@ -21,11 +24,15 @@ export default function Header({ state }: any) {
       <div className="flex justify-between items-center">
         <span className="font-bold text-lg md:text-xl w-36">DILARU-ID</span>
         <h1 className="text-right text-2xl">
-          Welcome <span className="font-bold text-lg md:text-3xl"> {state.name}</span>
+          Welcome{" "}
+          <span className="font-bold text-lg md:text-3xl">
+            {" "}
+            {userData[0]?.data.username}
+          </span>
         </h1>
         <div className="hidden md:flex gap-2 items-center">
           <p className="w-36 truncate overflow-hidden">
-            {state.userWeb5data.userDid}
+            {userData[0]?.record.author}
           </p>
           <IconButton
             handleClick={() => {

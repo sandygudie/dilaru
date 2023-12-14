@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import { AppContext } from "@/context";
 import { useWeb5 } from "@/hooks/useWeb5";
 import Spinner from "@/components/Spinner";
-
 import { MdErrorOutline } from "react-icons/md";
+import Link from "next/link";
+import useUserInfo from "@/hooks/useUserInfo";
 
 export default function Login() {
-  let { web5, userDid, isLoading } = useWeb5();
   const router = useRouter();
+  let { web5, userDid, isLoading } = useWeb5();
+  let { userData, createUserData } = useUserInfo(web5);
   const { getUserWeb5Data, setName, state } = useContext(AppContext);
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +21,7 @@ export default function Login() {
   const [isAuthenticated, setAuthenticated] = useState<boolean>();
 
   useEffect(() => {
-    const getUser = localStorage.getItem("userId");
+    const getUser = localStorage.getItem("userstatus");
     if (getUser === null) {
       setAuthenticated(false);
     } else {
@@ -47,17 +49,10 @@ export default function Login() {
       };
       getUserWeb5Data({ userWeb5data });
       setName({ name: userName });
-      localStorage.setItem("userId", "Dilaru_id");
-
-      const { record }: any = await web5?.dwn.records.create({
-        data: {
-          username: userName,
-          password: password,
-        },
-        message: {
-          schema: "http://schema-registry.org/message",
-          dataFormat: "application/json",
-        },
+      localStorage.setItem("userstatus", "authenticated");
+      createUserData({
+        username: userName,
+        password: password,
       });
       setLoading(false);
       router.push("/dashboard");
@@ -68,22 +63,6 @@ export default function Login() {
   };
   const handleAuthenticatedUser = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // if (web5 !== null) {
-    const { records }: any = await web5?.dwn.records.query({
-      message: {
-        filter: {
-          schema: "http://schema-registry.org/message",
-          dataFormat: "application/json",
-        },
-      },
-    });
-    const userData = [];
-    for (let record of records) {
-      const data = await record.data.json();
-      const dataRecord = { record, data, id: record.id };
-      userData.push(dataRecord);
-    }
-    console.log(userData);
 
     if (userData[0].data.password === password) {
       const userWeb5data = {
@@ -96,8 +75,8 @@ export default function Login() {
     } else {
       setError("Invalid Credential");
     }
-    // }
   };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
@@ -116,13 +95,16 @@ export default function Login() {
             className="p-4 block mb-6 rounded-lg text-black w-2/6 min-w-[300px]"
             placeholder="Name"
             required
+            min="5"
           />
           <input
             onChange={(e) => handlePasswordChange(e)}
-            type="password"
+            type="text"
             className="p-4 rounded-lg text-black w-2/6 min-w-[300px]"
             placeholder="PIN"
+            min="5"
             required
+
           />
           <p className="text-xs mt-2 text-white">
             (*Your pin is important for account recovery)
@@ -142,7 +124,7 @@ export default function Login() {
             <div className="relative">
               <input
                 onChange={(e) => handlePasswordChange(e)}
-                type="password"
+                type="text"
                 className={`${
                   error.length > 0 ? "border-[1px] border-error" : "border-none"
                 } p-4 rounded-lg text-black w-2/6 min-w-[300px]`}
@@ -156,10 +138,16 @@ export default function Login() {
                 </p>
               ) : null}
             </div>
-            <div className="text-center my-10 w-40 mx-auto">
+            <Link
+              href="/recover-password"
+              className="text-yellow text-xs mt-2 text-right block"
+            >
+              forget password?
+            </Link>
+            <div className="text-center mt-10 w-40 mx-auto">
               <button
                 type={"submit"}
-                className="p-4 font-bold text-white rounded-lg w-full h-12  bg-yellow flex flex-col items-center justify-center"
+                className="p-4 font-bold text-white rounded-lg w-full h-12 bg-yellow flex flex-col items-center justify-center"
               >
                 {loading ? <Spinner /> : "Login"}
               </button>

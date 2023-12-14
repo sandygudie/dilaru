@@ -6,27 +6,31 @@ import { AppContext } from "@/context";
 import { useRouter } from "next/navigation";
 import Profile from "@/components/Profile";
 import Loading from "../loading";
-import Spinner from "@/components/Spinner";
+import { useWeb5 } from "@/hooks/useWeb5";
+import useUserInfo from "@/hooks/useUserInfo";
 
 export default function Dashboard() {
-  const { state } = useContext(AppContext);
+  let { web5, userDid, isLoading } = useWeb5();
+  let { userData,updateUserData } = useUserInfo(web5);
+  // const { state } = useContext(AppContext);
   const router = useRouter();
 
   useEffect(() => {
-    if (!state.userWeb5data.userDid.length) {
+    const getUserStatus = localStorage.getItem("userstatus");
+    if (getUserStatus === null) {
       router.push("/");
     }
-  }, [state.userWeb5data.userDid]);
-  // console.log(state.userWeb5data.userDid);
+  }, [router]);
+  // use route query to toggle view for the sidevbar menu
+  // console.log(userData)
+  // console.log(userDid)
   return (
     <>
-      {state.userWeb5data.userDid ? (
+      {userDid && userData ? (
         <div className="flex bg-white items-start relative">
           <Sidebar />
-          <Header state={state} />
-          {/* <Suspense fallback={<Loading />}> */}
-          <Profile />
-          {/* </Suspense> */}
+          <Header userData={userData} />
+          <Profile updateUserData ={updateUserData } userData={userData} />
         </div>
       ) : (
         <Loading />
