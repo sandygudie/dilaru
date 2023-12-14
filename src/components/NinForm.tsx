@@ -13,6 +13,7 @@ type Inputs = {
   expiryDate: "";
   nationality: "";
   ninNo: "";
+  age: "";
 };
 
 interface NinFormProps {
@@ -32,66 +33,67 @@ export default function NinForm({ handleNinForm }: NinFormProps) {
           register={{ ...register("surname", { required: true }) }}
           type="text"
           label="Surname"
-          name="name"
+          name="surname"
           placeholder="Surname"
         />
         <TextField
           register={{ ...register("firstname", { required: true }) }}
           type="text"
           label="First Name"
-          name="name"
+          name="firstname"
           placeholder="Firstname"
         />
         <TextField
           register={{ ...register("middlename", { required: true }) }}
           type="text"
           label="Middle Name"
-          name="name"
+          name="middlename"
         />
 
         <TextField
           register={{ ...register("issuedDate", { required: true }) }}
           type="Date"
           label="Issued Date"
-          name="name"
+          name="issuedDate"
         />
         <TextField
           register={{ ...register("dob", { required: true }) }}
           type="Date"
           label="Date Of Birth"
-          name="name"
+          name="dob"
         />
+
         <TextField
           register={{ ...register("gender", { required: true }) }}
           type="text"
           label="Sex"
-          name="name"
+          name="gender"
         />
         <TextField
           register={{ ...register("height", { required: true }) }}
           type="number"
           label="Height(cm)"
-          name="name"
+          name="height"
           min={0}
         />
         <TextField
           register={{ ...register("expiryDate", { required: true }) }}
           type="Number"
           label="Expiry"
-          name="name"
+          name="expiryDate"
           min={0}
         />
         <TextField
           register={{ ...register("nationality", { required: true }) }}
           type="text"
           label="Nationality"
-          name="name"
+          name="nationality"
         />
         <TextField
           register={{ ...register("ninNo", { required: true }) }}
           type="text"
           label="NIN No."
-          name="name"
+          name="ninNo"
         />
       </div>
       <div className="text-center my-8">

@@ -104,10 +104,9 @@ export default function Login() {
             placeholder="PIN"
             min="5"
             required
-
           />
           <p className="text-xs mt-2 text-white">
-            (*Your pin is important for account recovery)
+            (* Pin is required for subsquent login)
           </p>
           <div className="text-center w-40 mx-auto">
             <button
