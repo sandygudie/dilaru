@@ -24,14 +24,14 @@ export default function Header({ userData }: Props) {
   return (
     <div className="p-4 md:p-6 absolute top-0 w-full bg-yellow">
       <div className="flex justify-between items-center">
-        <span className="font-bold text-lg md:text-xl w-36">
+        <span className="font-bold w-36">
           <Link href="/dashboard">
             <Image
               src="/logo-black.png"
               alt="logo"
               height={100}
               width={100}
-              className="w-36"
+              className="w-36 h-auto"
             />
           </Link>
         </span>

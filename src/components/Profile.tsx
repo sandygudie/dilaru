@@ -35,10 +35,9 @@ export default function Profile({ updateUserData, userData }: Props) {
             <h2 className="font-bold text-lg ">Verified Credentials</h2>
             <button
               onClick={() => setModalOpen(true)}
-              className="cursor-pointer bg-yellow/10 flex items-center shadow-xl p-4 border-[1px] flex-col justify-center"
+              className="cursor-pointer flex items-center shadow-xl p-4 border-[1px] flex-col justify-center"
             >
               <IoAddCircleOutline color="black" className="text-4xl" />
-
               <p className="text-sm">Add Verified Credentials</p>
             </button>
           </div>
@@ -52,10 +51,11 @@ export default function Profile({ updateUserData, userData }: Props) {
           />
         </div>
       ) : (
-        <div className="flex items-center text-black h-full justify-center flex-col">
+        <div className="flex items-center text-black h-[60vh] justify-center flex-col">
           <button
             onClick={() => setModalOpen(true)}
-            className="cursor-pointer bg-yellow/10 flex items-center shadow-lg p-6 md:py-8 md:px-10 border-[1px] flex-col justify-center"
+            className="cursor-pointer flex items-center shadow-xl hover:bg-yellow/10 bg-yellow/5 p-6 
+             flex-col justify-center"
           >
             <IoAddCircleOutline color="black" className="text-4xl" />
 
